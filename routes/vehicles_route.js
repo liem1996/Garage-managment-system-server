@@ -1,11 +1,7 @@
 const express = require('express')
 const router = express.Router()
+const Vehicle = require('../controllers/Vhicles')
 
-const vhicles_model = require('../models/vehicle_model')
-
-
-router.get('/', (req,res)=>{
-    res.send("Hello");
-});
+router.get('/getVeicles', Vehicle.getVeicles);
 
 module.exports = router
