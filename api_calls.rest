@@ -3,3 +3,24 @@
 GET http://localhost:3000/getVeicles
 
 ###
+
+POST  http://localhost:3000/addNewVehicle
+Content-Type: application/json
+
+{
+        "Type":["1111", "1212"],   
+        "ModelName":"hello",
+        "LicenseNumber" :10,
+        "AvailablEnergyPercentage":100,
+        "MaximumTirePressure":200,
+        "InflateTire" :100,
+        "AddEnergy":"now",
+        "EnergySource": "blabla",  
+        "Wheels":2
+}
+
+###
+
+GET http://localhost:3000/getVehicleByLicense/10
+
+###
