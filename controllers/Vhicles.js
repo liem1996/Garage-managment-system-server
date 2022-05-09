@@ -63,12 +63,98 @@ const getVehicleByLicense = async (req, res) => {
 }
 
 // Inflate vehicle tires to maximum pressure
+// Compare the tires pressure to the max and change it if smaller
+const infalteTiresToMax = async (req,res) =>{
+    try {
+        Vehicles = await Vehicle.find();
+
+        for (var i=0; i<Vehicles.length; i++){
+
+            for (var j=0; j<Vehicles[i].Wheels.length; j++)
+            {
+            if (Vehicles[i].Wheels[j] <= Vehicles[i].MaximumTirePressure){
+                Vehicles[i].Wheels[j] = Vehicles[i].MaximumTirePressure;
+            }
+            else {
+                res.status(400).send({
+                    'status': 'fail',
+                    'error': err.message
+                })
+            }
+        }
+    }
+
+        res.status(200).send(Vehicles);
+        
+        }
+        catch (err) {
+        res.status(400).send({
+            'status': 'fail',
+            'error': err.message
+        })
+    }
+}
 
 // Add energy (Refuel a vehicle or recharge) by license number
+const addEnergyByLicense = async (req,res) =>{
+    try {       
+        // use AvailablEnergyPercentage
+        // use EnergySource
+        const vehicle = await Vehicle.findOne({'LicenseNumber':req.params.LicenseNumber});
+
+            res.status(200).send(vehicle)
+        
+    } catch (err) {
+        res.status(400).send({
+            'status': 'fail',
+            'error': err.message
+        })
+    }
+}
+
+
+// Bonus: Add a sorting (Retrieve all vehicles) by one or more properties.
+// Sorting by License Number number from big to small
+const getVehiclesFromSorting = async (req, res) =>{
+
+    try {
+        const sorting = await Vehicle.find().sort({
+            LicenseNumber: -1
+        });
+
+        res.status(200).send(sorting);
+    } catch (err) {
+        res.status(400).send({
+            'status': 'fail',
+            'error': err.message
+        })
+    }
+}
+
+// Wheels serch
+const getVehicleFromFreeSearch = async (req, res) => {
+
+    var num1 = req.params.freesearch;
+
+    try {
+        const vehicles1 = await Vehicle.find({'Wheels': num1});
+
+        res.status(200).send(vehicles1);
+    } catch (err) {
+        res.status(400).send({
+            'status': 'fail',
+            'error': err.message
+        })
+    }
+}
 
 
 module.exports = {
     getVeicles,
     addNewVehicle,
-    getVehicleByLicense
+    getVehicleByLicense,
+    getVehicleFromFreeSearch,
+    getVehiclesFromSorting,
+    infalteTiresToMax,
+    addEnergyByLicense
 }

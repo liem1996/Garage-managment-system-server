@@ -9,18 +9,28 @@ Content-Type: application/json
 
 {
         "Type":["1111", "1212"],   
-        "ModelName":"hello",
-        "LicenseNumber" :10,
+        "ModelName":"heythere1",
+        "LicenseNumber" :200,
         "AvailablEnergyPercentage":100,
-        "MaximumTirePressure":200,
+        "MaximumTirePressure":100,
         "InflateTire" :100,
-        "AddEnergy":"now",
+        "AddEnergy":40,
         "EnergySource": "blabla",  
-        "Wheels":2
+        "Wheels":[20, 30, 50, 60, 30, 10]
 }
 
 ###
 
 GET http://localhost:3000/getVehicleByLicense/10
+
+###
+GET http://localhost:3000/getVehicleFromFreeSearch/2
+###
+
+GET http://localhost:3000/getVehiclesFromSorting
+
+###
+
+GET http://localhost:3000/infalteTiresToMax
 
 ###

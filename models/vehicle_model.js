@@ -27,7 +27,7 @@ const VhicleSchema = new mongoose.Schema({
         required: true
     },
     AddEnergy:{
-        type: String,
+        type: Number,
         required: true
     },
     EnergySource:{
@@ -35,7 +35,7 @@ const VhicleSchema = new mongoose.Schema({
         required: true
     },
     Wheels:{
-        type: Number,
+        type: [Number],
         required: true
     }
 })
