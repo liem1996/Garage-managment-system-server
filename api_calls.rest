@@ -9,12 +9,12 @@ Content-Type: application/json
 
 {
         "Type":["1111", "1212"],   
-        "ModelName":"heythere1",
-        "LicenseNumber" :200,
+        "ModelName":"thtt333",
+        "LicenseNumber" :400,
         "AvailablEnergyPercentage":100,
         "MaximumTirePressure":100,
         "InflateTire" :100,
-        "AddEnergy":40,
+        "AddEnergy":50,
         "EnergySource": "blabla",  
         "Wheels":[20, 30, 50, 60, 30, 10]
 }
@@ -31,6 +31,10 @@ GET http://localhost:3000/getVehiclesFromSorting
 
 ###
 
-GET http://localhost:3000/infalteTiresToMax
+POST http://localhost:3000/infalteTiresToMax
+
+###
+
+POST http://localhost:3000/addEnergyByLicense/10
 
 ###

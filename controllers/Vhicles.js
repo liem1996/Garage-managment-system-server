@@ -96,13 +96,17 @@ const infalteTiresToMax = async (req,res) =>{
 }
 
 // Add energy (Refuel a vehicle or recharge) by license number
+// When the available percentage lower or equal to add energy (the trashold) it charged to 100%
 const addEnergyByLicense = async (req,res) =>{
     try {       
-        // use AvailablEnergyPercentage
-        // use EnergySource
-        const vehicle = await Vehicle.findOne({'LicenseNumber':req.params.LicenseNumber});
 
-            res.status(200).send(vehicle)
+        const vehicle = await Vehicle.findOne({'LicenseNumber':req.params.LicenseNumber});
+        
+        if (vehicle.AvailablEnergyPercentage <= vehicle.AddEnergy){
+            vehicle.AvailablEnergyPercentage = 100;
+        }
+
+        res.status(200).send(vehicle)
         
     } catch (err) {
         res.status(400).send({

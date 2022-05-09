@@ -12,6 +12,9 @@ router.get('/getVehicleFromFreeSearch/:freesearch', Vehicle.getVehicleFromFreeSe
 
 router.get('/getVehiclesFromSorting', Vehicle.getVehiclesFromSorting);
 
-router.get('/infalteTiresToMax', Vehicle.infalteTiresToMax);
+router.post('/infalteTiresToMax', Vehicle.infalteTiresToMax);
+
+router.post('/addEnergyByLicense/:LicenseNumber', Vehicle.addEnergyByLicense);
+
 
 module.exports = router
