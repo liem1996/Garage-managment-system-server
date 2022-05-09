@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 
 const VhicleSchema = new mongoose.Schema({
     Type: {
-        type: [String],
+        type: String,
         required: true
     },
     ModelName: {
@@ -31,7 +31,7 @@ const VhicleSchema = new mongoose.Schema({
         required: true
     },
     EnergySource:{
-        type: [String],
+        type: String,
         required: true
     },
     Wheels:{

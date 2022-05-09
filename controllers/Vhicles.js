@@ -19,8 +19,29 @@ const addNewVehicle = async (req, res) => {
     const maximumTirePressure = req.body.MaximumTirePressure;
     const inflateTire=req.body.InflateTire;
     const addEnergy =  req.body.AddEnergy;
-    const energySource =  req.body.EnergySource;
+    let energySource =  req.body.EnergySource;
     const wheels =  req.body.Wheels;
+
+    if (type =="Regular motorcycle"){
+        wheels.length =2;
+        energySource = "fuel tank";
+    }
+    if (type =="Electric motorcycle"){
+        wheels.length =2;
+        energySource = "battery";
+    }
+    if (type =="Regular car"){
+        wheels.length =4;
+        energySource = "fuel tank";
+    }
+    if (type == "Electric car"){
+        wheels.length =4;
+        energySource = "battery";
+    }
+    if (type == "Truck"){
+        wheels.length = 16;
+        energySource = "fuel tank";
+    }
 
     const vehicle = Vehicle({
         Type:type,

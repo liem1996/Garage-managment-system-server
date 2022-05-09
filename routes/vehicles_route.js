@@ -20,7 +20,7 @@ const Vehicle = require('../controllers/Vhicles')
 *           - Wheels
 *       properties:
 *         Type:
-*           type: [String]
+*           type: String
 *           description: Type of the vhicle
 *         ModelName:
 *           type: String
@@ -41,20 +41,20 @@ const Vehicle = require('../controllers/Vhicles')
 *           type: Number
 *           description: The trashold of each vhicle present
 *         EnergySource:
-*           type: [String]
+*           type: String
 *           description: The energy source of each vehicle - battery/full tank
 *         Wheels:
 *           type: [Number]
 *           description: List of the vehicle wheels that include the tire pressure of each wheel
 *       example:
-*           Type: ["Regular motorcycle", "Electric motorcycle", "Regular car", "Electric car", "Truck"]  
+*           Type: "Electric car"  
 *           ModelName: "ChevroletAveo"
 *           LicenseNumber: 6512152
 *           AvailablEnergyPercentage: 30
 *           MaximumTirePressure: 100
 *           InflateTire: 2
 *           AddEnergy: 50
-*           EnergySource: ["battery", "full tank"]  
+*           EnergySource: "battery" 
 *           Wheels: [20, 30, 50, 60, 30, 10]
 */
 
