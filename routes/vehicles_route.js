@@ -4,13 +4,6 @@ const Vehicle = require('../controllers/Vhicles')
 
 /**
 * @swagger
-* tags:
-*   name: Get Vehicles
-*   description: Retrieve all of the available vehicles
-*/
-
-/**
-* @swagger
 * components:
 *   schemas:
 *     Vehicle:
@@ -67,7 +60,7 @@ const Vehicle = require('../controllers/Vhicles')
 
 /**
 * @swagger
-* /getVehicles:
+* /getVeicles:
 *   get:
 *     summary: get all vehicles
 *     tags: [Vehicle Api]
@@ -84,15 +77,110 @@ const Vehicle = require('../controllers/Vhicles')
 
 router.get('/getVeicles', Vehicle.getVeicles);
 
+/**
+* @swagger
+* /addNewVehicle:
+*   post:
+*     summary: Add a new vehicle
+*     tags: [Vehicle Api]
+*     requestBody:
+*       required: true
+*       content:
+*         application/json:
+*           schema:
+*             $ref: '#/components/schemas/Vehicle'
+*     responses:
+*       200:
+*         description: Add new vehicle 
+*         content:
+*           application/json:
+*             schema:
+*               $ref: '#/components/schemas/Vehicle'
+*/
+
 router.post('/addNewVehicle', Vehicle.addNewVehicle);
+
+/**
+* @swagger
+* /getVehicleByLicense/{LicenseNumber}:
+*   get:
+*     summary: Get the vehicle by license number
+*     tags: [Vehicle Api]
+*     parameters:
+*       - in: path
+*         name: LicenseNumber
+*         schema:
+*           type: Number
+*         description: The License Number
+*     responses:
+*       200:
+*         description: The vehicle
+*         content:
+*           application/json:
+*             schema:
+*               $ref: '#/components/schemas/Vehicle'
+*/
 
 router.get('/getVehicleByLicense/:LicenseNumber', Vehicle.getVehicleByLicense);
 
-router.get('/getVehicleFromFreeSearch/:freesearch', Vehicle.getVehicleFromFreeSearch);
+/**
+* @swagger
+* /getVehiclesFromSorting:
+*   get:
+*     summary: get all vehicles by sorted from big to small the lisence number
+*     tags: [Vehicle Api]
+*     responses:
+*       200:
+*         description: The vehicles list
+*         content:
+*           application/json:
+*             schema:
+*               type: array
+*               items:
+*                 $ref: '#/components/schemas/Vehicle'
+*/
 
 router.get('/getVehiclesFromSorting', Vehicle.getVehiclesFromSorting);
 
+/**
+* @swagger
+* /infalteTiresToMax:
+*   post:
+*     summary: Compare the tires pressure to the max and change it if smaller and return the updated
+*     tags: [Vehicle Api]
+*     responses:
+*       200:
+*         description: The vehicles updated list
+*         content:
+*           application/json:
+*             schema:
+*               type: array
+*               items:
+*                 $ref: '#/components/schemas/Vehicle'
+*/
+
 router.post('/infalteTiresToMax', Vehicle.infalteTiresToMax);
+
+/**
+* @swagger
+* /addEnergyByLicense/{LicenseNumber}:
+*   post:
+*     summary: When the available percentage lower or equal to add energy (the trashold) it charged to 100% and send the updated
+*     tags: [Vehicle Api]
+*     parameters:
+*       - in: path
+*         name: LicenseNumber
+*         schema:
+*           type: Number
+*         description: The License Number
+*     responses:
+*       200:
+*         description: The vehicle
+*         content:
+*           application/json:
+*             schema:
+*               $ref: '#/components/schemas/Vehicle'
+*/
 
 router.post('/addEnergyByLicense/:LicenseNumber', Vehicle.addEnergyByLicense);
 

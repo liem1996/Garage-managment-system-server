@@ -8,23 +8,21 @@ POST  http://localhost:3000/addNewVehicle
 Content-Type: application/json
 
 {
-        "Type":["1111", "1212"],   
-        "ModelName":"thtt333",
-        "LicenseNumber" :400,
-        "AvailablEnergyPercentage":100,
-        "MaximumTirePressure":100,
-        "InflateTire" :100,
-        "AddEnergy":50,
+        "Type":["truck", "electric car"],   
+        "ModelName":"chevrolet aveo",
+        "LicenseNumber" :15022301,
+        "AvailablEnergyPercentage":20,
+        "MaximumTirePressure":70,
+        "InflateTire" :40,
+        "AddEnergy":30,
         "EnergySource": ["blabla", "blabla2"],  
         "Wheels":[20, 30, 50, 60, 30, 10]
 }
 
 ###
 
-GET http://localhost:3000/getVehicleByLicense/10
+GET http://localhost:3000/getVehicleByLicense/15022301
 
-###
-GET http://localhost:3000/getVehicleFromFreeSearch/2
 ###
 
 GET http://localhost:3000/getVehiclesFromSorting
@@ -35,6 +33,6 @@ POST http://localhost:3000/infalteTiresToMax
 
 ###
 
-POST http://localhost:3000/addEnergyByLicense/10
+POST http://localhost:3000/addEnergyByLicense/15022301
 
 ###

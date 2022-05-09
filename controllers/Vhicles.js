@@ -135,29 +135,12 @@ const getVehiclesFromSorting = async (req, res) =>{
     }
 }
 
-// Wheels serch
-const getVehicleFromFreeSearch = async (req, res) => {
-
-    var num1 = req.params.freesearch;
-
-    try {
-        const vehicles1 = await Vehicle.find({'Wheels': num1});
-
-        res.status(200).send(vehicles1);
-    } catch (err) {
-        res.status(400).send({
-            'status': 'fail',
-            'error': err.message
-        })
-    }
-}
 
 
 module.exports = {
     getVeicles,
     addNewVehicle,
     getVehicleByLicense,
-    getVehicleFromFreeSearch,
     getVehiclesFromSorting,
     infalteTiresToMax,
     addEnergyByLicense
