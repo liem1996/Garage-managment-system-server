@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+const swaggerUI = require("swagger-ui-express")
+const swaggerJsDoc = require("swagger-jsdoc")
 // in order to analayze the url body parameters
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({extended:true, limit: '1m'}))
@@ -22,5 +24,25 @@ app.listen(port, ()=>
 {
     console.log("server is running on port: "+port);
 });
+
+// Adding the swagger doc    
+    const options = {
+        definition: {
+            openapi: "3.0.0",
+            info: {
+                title: "Node API Description",
+                version: "1.0.0",
+                description: "Extension about the API's",
+            },
+        //    bearerAuth: {type: 'apiKey', in: 'header', name: 'authorization'},
+            servers: [{url: "http://localhost:" + port,},],
+            
+        },
+        apis: ["./routes/*.js"],
+    };
+    const specs = swaggerJsDoc(options);
+
+    app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
+ 
 
 

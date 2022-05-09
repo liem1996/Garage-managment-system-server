@@ -15,7 +15,7 @@ Content-Type: application/json
         "MaximumTirePressure":100,
         "InflateTire" :100,
         "AddEnergy":50,
-        "EnergySource": "blabla",  
+        "EnergySource": ["blabla", "blabla2"],  
         "Wheels":[20, 30, 50, 60, 30, 10]
 }
 
